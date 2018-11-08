@@ -7,6 +7,7 @@ export default class PokemonIndexItem extends React.Component {
       <Link to={`/pokemon/${this.props.pokemon.id}`}>
         <li>
           <img src={this.props.pokemon.image_url}/>
+          <span>{this.props.pokemon.name}</span>
         </li>
       </Link>
     );
