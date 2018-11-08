@@ -3,13 +3,18 @@ import { requestAllPokemon } from '../../actions/pokemon_actions';
 import { selectAllPokemon } from '../../reducers/selectors';
 import PokemonIndex from './pokemon_index';
 
-const mapStateToProps = state => ({
-  pokemon: selectAllPokemon(state)
-});
+const mapStateToProps = state => {
 
-const mapDispatchToProps = dispatch => ({
-  requestAllPokemon: dispatch(requestAllPokemon())
-});
+  return { pokemon: selectAllPokemon(state) };
+};
 
-const connec = () => connect(mapStateToProps, mapDispatchToProps)(PokemonIndex);
-export default connec;
+const mapDispatchToProps = dispatch => {
+
+  return { requestAllPokemon: () => {
+
+    dispatch(requestAllPokemon());
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PokemonIndex);
